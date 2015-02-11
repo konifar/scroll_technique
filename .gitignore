@@ -1,0 +1,17 @@
+/local.properties
+/.idea
+*.iml
+.DS_Store
+*.log
+
+.gradle
+gradle/
+/build
+app/build/
+*.jks
+*.apk
+
+class_files.txt
+mapping.txt
+seeds.txt
+unused.txt
