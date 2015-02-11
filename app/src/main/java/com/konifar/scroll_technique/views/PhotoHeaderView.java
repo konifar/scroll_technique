@@ -13,8 +13,8 @@ import butterknife.InjectView;
 
 public class PhotoHeaderView extends ScrollTransitionHeaderView {
 
-    @InjectView(R.id.dummy_img_header)
-    View mDummyImgHeader;
+    @InjectView(R.id.img_header_cover)
+    View mImgHeaderCover;
     @InjectView(R.id.img_header)
     AspectRatioImageView mImgHeader;
     @InjectView(R.id.txt_title)
@@ -40,7 +40,7 @@ public class PhotoHeaderView extends ScrollTransitionHeaderView {
 
     @Override
     View getImgHeaderCover() {
-        return mDummyImgHeader;
+        return mImgHeaderCover;
     }
 
     @Override

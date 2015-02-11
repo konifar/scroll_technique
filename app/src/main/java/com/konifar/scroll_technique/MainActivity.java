@@ -3,7 +3,9 @@ package com.konifar.scroll_technique;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.konifar.scroll_technique.models.pojo.Photo;
@@ -59,6 +61,16 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                header.translate(mToolbar, R.color.theme500);
+            }
+        });
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                headerPhoto = adapter.getItem(position - mListView.getHeaderViewsCount());
+                initActionBar();
+                header.bindData(headerPhoto);
                 header.translate(mToolbar, R.color.theme500);
             }
         });

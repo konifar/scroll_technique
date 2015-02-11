@@ -5,6 +5,8 @@ import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 public abstract class ScrollTransitionHeaderView extends LinearLayout {
 
+    private static final Interpolator INTERPOLATOR = new AccelerateInterpolator();
     private RectF rect1 = new RectF();
     private RectF rect2 = new RectF();
 
@@ -38,9 +41,8 @@ public abstract class ScrollTransitionHeaderView extends LinearLayout {
         float top = getTop();
         float transitionHeight = (float) (getImgHeader().getHeight() - toolbar.getHeight());
 
-        // image translation
+        // image parallax translation
         ViewHelper.setTranslationY(getImgHeader(), -top * 0.5f);
-//        getImgHeader().setTranslationY(-top * 0.5f);
 
         float ratio = caltulateRatio(-top, transitionHeight);
 
@@ -73,7 +75,7 @@ public abstract class ScrollTransitionHeaderView extends LinearLayout {
     }
 
     private void interpolate(Toolbar toolbar, float ratio) {
-        float interpolation = ViewUtils.INTERPOLATOR.getInterpolation(ratio);
+        float interpolation = INTERPOLATOR.getInterpolation(ratio);
         TextView toolbarTextView = ViewUtils.getInstance().getToolbarTextView(toolbar);
         getOnScreenRect(rect1, getTitleTextView());
         getOnScreenRect(rect2, toolbarTextView);

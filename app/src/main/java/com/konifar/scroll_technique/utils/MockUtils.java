@@ -10,7 +10,6 @@ public class MockUtils {
     private static MockUtils instance;
 
     private MockUtils() {
-        //
     }
 
     public static MockUtils getInstance() {

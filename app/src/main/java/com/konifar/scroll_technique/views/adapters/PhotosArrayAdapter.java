@@ -50,14 +50,14 @@ public class PhotosArrayAdapter extends ArrayAdapter<Photo> {
         holder.mTxtSubTitle.setText(photo.getSubTitle());
     }
 
-    public void addAll(List<Photo> items) {
-        if (items == null) return;
+    public void addAll(List<Photo> photos) {
+        if (photos == null) return;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            super.addAll(items);
+            super.addAll(photos);
         } else {
-            for (Photo item : items) {
-                super.add(item);
+            for (Photo photo : photos) {
+                super.add(photo);
             }
         }
     }

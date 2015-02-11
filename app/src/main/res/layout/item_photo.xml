@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/img_thumb"
-        android:maxLines="2"
         android:textSize="@dimen/text_medium" />
 
     <TextView
@@ -29,7 +28,6 @@
         android:layout_marginTop="4dp"
         android:layout_toRightOf="@id/img_thumb"
         android:drawablePadding="4dp"
-        android:maxLines="2"
         android:textSize="@dimen/text_small" />
 
 </RelativeLayout>

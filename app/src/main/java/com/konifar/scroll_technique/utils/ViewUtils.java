@@ -5,8 +5,6 @@ import android.os.Build;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Interpolator;
 import android.widget.TextView;
 
 import com.konifar.scroll_technique.R;
@@ -19,15 +17,14 @@ import java.lang.reflect.Field;
 
 public class ViewUtils {
 
-    public static final Interpolator INTERPOLATOR = new AccelerateInterpolator();
     private static final String TAG = ViewUtils.class.getSimpleName();
-    private static final int IMAGE_FADE_DURATION_MILLS = 300;
+    private static final int IMAGE_FADE_DURATION_MILLS = 200;
+
     private static ViewUtils instance;
     private DisplayImageOptions defaultImageOptions;
     private DisplayImageOptions roundedImageOptions;
 
     private ViewUtils() {
-        //
     }
 
     public static ViewUtils getInstance() {
@@ -73,9 +70,7 @@ public class ViewUtils {
             Field f = toolbar.getClass().getDeclaredField("mTitleTextView");
             f.setAccessible(true);
             titleTextView = (TextView) f.get(toolbar);
-        } catch (NoSuchFieldException e) {
-            Log.e(TAG, e.toString());
-        } catch (IllegalAccessException e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             Log.e(TAG, e.toString());
         }
         return titleTextView;
@@ -88,6 +83,5 @@ public class ViewUtils {
             view.setBackgroundDrawable(drawable);
         }
     }
-
 
 }
