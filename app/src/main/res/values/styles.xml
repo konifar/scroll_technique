@@ -6,10 +6,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextTitle.Big">
-        <item name="android:textSize">@dimen/text_large</item>
-    </style>
-
     <style name="TextTitle.Short">
         <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
@@ -22,7 +18,7 @@
 
     <style name="BaseListView">
         <item name="android:clipToPadding">false</item>
-        <item name="android:divider">@color/grey200</item>
+        <item name="android:divider">@drawable/divider</item>
         <item name="android:dividerHeight">@dimen/line</item>
         <item name="android:fadingEdge">none</item>
         <item name="android:footerDividersEnabled">false</item>

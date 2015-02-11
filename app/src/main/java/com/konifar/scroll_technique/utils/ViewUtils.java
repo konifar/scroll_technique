@@ -5,7 +5,7 @@ import android.os.Build;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.TextView;
 
@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 
 public class ViewUtils {
 
-    public static final Interpolator INTERPOLATOR = new DecelerateInterpolator();
+    public static final Interpolator INTERPOLATOR = new AccelerateInterpolator();
     private static final String TAG = ViewUtils.class.getSimpleName();
     private static final int IMAGE_FADE_DURATION_MILLS = 300;
     private static ViewUtils instance;

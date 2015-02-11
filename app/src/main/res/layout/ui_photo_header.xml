@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -7,7 +8,8 @@
         android:id="@+id/img_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:imageRatio="1" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -34,12 +36,12 @@
 
         <TextView
             android:id="@+id/txt_title"
-            style="@style/TextTitle.Big"
+            style="@style/TextTitle.Short"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:shadowColor="@color/black"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:textStyle="normal" />
     </FrameLayout>
 
 </RelativeLayout>
