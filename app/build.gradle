@@ -1,9 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: 'signing_configs/debug.gradle', to: android
-
-if (rootProject.file('app/signing_configs/release.gradle').exists()) {
-    apply from: 'signing_configs/release.gradle', to: android
-}
+apply from: 'signing_configs/release.gradle', to: android
 
 android {
     compileSdkVersion 21
