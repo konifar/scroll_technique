@@ -1,10 +1,10 @@
 #!/bin/sh
 
-command=assembleIntegrationDebug
+command=assembleStagingDebug
 
 case ${CIRCLE_BRANCH} in
 master)
-  command=assembleStagingDebug
+  command=assembleProductionDebug
   ;;
 esac
 
