@@ -1,0 +1,12 @@
+#!/bin/sh
+
+command=assembleStagingDebug
+
+case ${CIRCLE_BRANCH} in
+master)
+  command=assembleProductionDebug
+  ;;
+esac
+
+echo ./gradlew clean ${command}
+./gradlew clean ${command}

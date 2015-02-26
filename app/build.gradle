@@ -1,27 +1,42 @@
 apply plugin: 'com.android.application'
+apply from: 'signing_configs/debug.gradle', to: android
+apply from: 'signing_configs/release.gradle', to: android
 
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "com.konifar.yokohama_seichi_junrei"
         minSdkVersion 9
         targetSdkVersion 21
         versionCode 1
         versionName "1.0.0"
     }
+
+    productFlavors {
+        development {
+            applicationId 'com.konifar.scroll_technique.development'
+        }
+        staging {
+            applicationId 'com.konifar.scroll_technique.staging'
+        }
+        production {
+            applicationId "com.konifar.scroll_technique"
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
+            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
-    productFlavors {
-    }
+
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
     }
