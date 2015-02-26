@@ -22,7 +22,7 @@ dependencies:
 
 test:
   override:
-    - "./run_test.sh":
+    - "./run_test":
         timeout: 600
 
 deployment:
