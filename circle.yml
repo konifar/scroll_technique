@@ -30,10 +30,9 @@ deployment:
     branch: develop
     commands:
       - curl -F "file=@app/build/outputs/apk/app-staging-debug.apk" -F "token=6be71c7256be1868b7515d6d7a31cc4b732a8ea5" -F "message=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" -F "distribution_key=da9b0d4a5177a7d0f94561b55dc1ee0d417ac380" -F "release_note=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" https://deploygate.com/api/users/konifar/apps
-      - curl -X POST --data-urlencode 'payload={"channel": "#scroll-technique", "username": "mayuri", "text": "Deploygate", "icon_url": "http://userdisk.webry.biglobe.ne.jp/020/046/94/N000/000/018/130326925085716314602_1303233227801.jpg"}' https://hooks.slack.com/services/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
+      - curl -X POST --data-urlencode 'payload={"channel":"#scroll-technique","username":"mayuri","text":"Deploygate","icon_url":"http://userdisk.webry.biglobe.ne.jp/020/046/94/N000/000/018/130326925085716314602_1303233227801.jpg"}' https://hooks.slack.com/services/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
 
   production:
     branch: master
     commands:
       - curl -F "file=@app/build/outputs/apk/app-production-debug.apk" -F "token=6be71c7256be1868b7515d6d7a31cc4b732a8ea5" -F "message=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" -F "distribution_key=e2eb4572b6eb18bb48382503fae8b636384400d2" -F "release_note=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" https://deploygate.com/api/users/konifar/apps
-      - curl -X POST --data-urlencode 'payload={"channel": "#scroll-technique", "username": "mayuri", "text": "Deploygate", "icon_url": "http://userdisk.webry.biglobe.ne.jp/020/046/94/N000/000/018/130326925085716314602_1303233227801.jpg"}' https://hooks.slack.com/services/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
