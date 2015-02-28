@@ -1,0 +1,39 @@
+machine:
+  environment:
+    ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "tools"
+    - echo y | android update sdk --no-ui --all --filter "platform-tools"
+    - echo y | android update sdk --no-ui --all --filter "android-19,build-tools-19.1.0,android-21,build-tools-21.1.2"
+    - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
+    - echo y | android update sdk --no-ui --all --filter "extra-android-support"
+    - echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
+    - echo y | android update sdk --no-ui --all --filter "extra-google-google_play_services"
+    - echo y | android update sdk --no-ui --all --filter "addon-google_apis-google-21"
+    - echo y | android update lib-project --path ./appcompat --target android-21
+    - echo y | android update project --path ./core --library ../appcompat --target android-21
+
+  cache_directories:
+    - ~/.android
+  override:
+    - ./gradlew dependencies
+
+test:
+  override:
+    - "./run_test":
+        timeout: 600
+
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - curl -F "file=@app/build/outputs/apk/app-staging-debug.apk" -F "token=6be71c7256be1868b7515d6d7a31cc4b732a8ea5" -F "message=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" -F "distribution_key=da9b0d4a5177a7d0f94561b55dc1ee0d417ac380" -F "release_note=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" https://deploygate.com/api/users/konifar/apps
+      - curl -X POST --data-urlencode 'payload={"channel":"#scroll-technique","username":"まゆしぃ（Deploygate）","text":"@konifar:とぅっとぅるー♪StagingアプリをDeploygateにアップロードしたのです！\nhttps://deploygate.com/distributions/da9b0d4a5177a7d0f94561b55dc1ee0d417ac380","icon_url":"https://dl.dropboxusercontent.com/u/3601859/steins_bot/mayuri.png"}' https://hooks.slack.com/services/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
+
+  production:
+    branch: master
+    commands:
+      - curl -F "file=@app/build/outputs/apk/app-production-debug.apk" -F "token=6be71c7256be1868b7515d6d7a31cc4b732a8ea5" -F "message=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" -F "distribution_key=e2eb4572b6eb18bb48382503fae8b636384400d2" -F "release_note=https://circleci.com/gh/konifar/scroll_technique/${CIRCLE_BUILD_NUM}" https://deploygate.com/api/users/konifar/apps
+      - curl -X POST --data-urlencode 'payload={"channel":"#scroll-technique","username":"鳳凰院凶真（Deploygate）","text":"@konifar:俺だ...ProductionDeploygateUpload...オペレーション・スクルドを開始する。\nhttps://deploygate.com/distributions/e2eb4572b6eb18bb48382503fae8b636384400d2","icon_url":"https://dl.dropboxusercontent.com/u/3601859/steins_bot/okarin.png"}' https://hooks.slack.com/services/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

@@ -8,6 +8,9 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.cookpad.android.issuereporter.ReportMail;
+import com.cookpad.android.issuereporter.SystemProfile;
+import com.cookpad.android.issuereporter.fragment.IssueReporterFragment;
 import com.konifar.scroll_technique.models.pojo.Photo;
 import com.konifar.scroll_technique.utils.MockUtils;
 import com.konifar.scroll_technique.views.PhotoHeaderView;
@@ -33,12 +36,23 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
+        initIssueReporter();
+
         headerPhoto = MockUtils.getInstance().getHeaderPhoto();
 
         initActionBar();
         initListView();
 
         adapter.addAll(MockUtils.getInstance().getListPhotos());
+    }
+
+    private void initIssueReporter() {
+        ReportMail reportMail = new ReportMail.Builder()
+                .email("yokohamaseichi@gmail.com")
+                .subject("Report an issue")
+                .body(new SystemProfile(this).toString())
+                .build();
+        IssueReporterFragment.apply(this, reportMail);
     }
 
     private void initActionBar() {
